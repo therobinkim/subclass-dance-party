@@ -13,6 +13,11 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
+.lineUp {
+  padding:5px 12px;
+  float:left;
+  background-color: #777;
+}
 .topbar{
   height:32px;
   background-color: #555;
@@ -26,6 +31,50 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 .raiden{
-  border:5px solid yellow;
-  border-radius:5px;
+  border:0px;
+  /*border:5px solid yellow;*/
+  /*border-radius:5px;*/
 }
+.space{
+  border:0px;
+  border-radius:0px;
+  box-shadow:
+    0 0 0 1em green,
+    0 1em 0 1em green,
+    -2.5em 1.5em 0 .5em green,
+    2.5em 1.5em 0 .5em green,
+    -3em -3em 0 0 green,
+    3em -3em 0 0 green,
+    -2em -2em 0 0 green,
+    2em -2em 0 0 green,
+    -3em -1em 0 0 green,
+    -2em -1em 0 0 green,
+    2em -1em 0 0 green,
+    3em -1em 0 0 green,
+    -4em 0 0 0 green,
+    -3em 0 0 0 green,
+    3em 0 0 0 green,
+    4em 0 0 0 green,
+    -5em 1em 0 0 green,
+    -4em 1em 0 0 green,
+    4em 1em 0 0 green,
+    5em 1em 0 0 green,
+    -5em 2em 0 0 green,
+    5em 2em 0 0 green,
+    -5em 3em 0 0 green,
+    -3em 3em 0 0 green,
+    3em 3em 0 0 green,
+    5em 3em 0 0 green,
+    -2em 4em 0 0 green,
+    -1em 4em 0 0 green,
+    1em 4em 0 0 green,
+    2em 4em 0 0 green;
+
+    background: green;
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+
+    margin: 50px 0 70px 65px;
+}
+
