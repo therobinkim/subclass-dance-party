@@ -7,14 +7,14 @@ Every step he changes to some size
 */
 
 var SpaceInvaderDancer = function(top, left, timeBetweenSteps) {
-  var randColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+  var randColor = '#' + Math.floor(Math.random()*16777215).toString(16);
   var cssColor = {background: randColor};
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('space');
   this._even = true;
   this.base = left;
   this.$node.css(cssColor);
-  this.strafeTime = Math.random()*300;
+  this.strafeTime = Math.random() * 300;
 }
 
 SpaceInvaderDancer.prototype = Object.create(Dancer.prototype);
@@ -23,7 +23,8 @@ SpaceInvaderDancer.prototype.constructor = SpaceInvaderDancer;
 SpaceInvaderDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 
-  var getClosest = function() {
+  // if too close to another dancer, run away!
+  var runAway = function() {
     //Get dancers
     for(var i = 0; i < window.dancers.length; i++) {
       var dancer = window.dancers[i];
@@ -33,10 +34,10 @@ SpaceInvaderDancer.prototype.step = function() {
 
         //do stuff to calculate distance
         var dist = distance(this.top, this.left, dancerTop, dancerLeft);
-        console.log(dist);
         if(dist < 100) {
           this.setPosition(this.top + 100, this.left);
         }
+
         function distance(myTop, myLeft, oTop, oLeft) {
           var result = Math.pow(myTop - oTop, 2) + Math.pow(myLeft - oLeft, 2);
           return Math.sqrt(result);
@@ -45,7 +46,7 @@ SpaceInvaderDancer.prototype.step = function() {
     }
   };
 
-  getClosest.call(this);
+  runAway.call(this);
   
   if(this._even) {
     if(this.left < this.base + 300) {
@@ -60,5 +61,5 @@ SpaceInvaderDancer.prototype.step = function() {
     }
   }
 
-  $(this.$node).animate({left:this.left}, this.strafeTime);
+  this.$node.animate({left: this.left}, this.strafeTime);
 };

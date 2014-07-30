@@ -15,7 +15,7 @@ var RaidenDancer = function(top, left, timeBetweenSteps) {
     standing: "http://www.mortalkombatwarehouse.com/mk2/raiden/sprites/stance/a1.gif",
     dizzy: "http://www.mortalkombatwarehouse.com/mk2/raiden/sprites/dizzy/a1.gif"
   };
-  this.$node = $('<img class="dancer raiden" src='+ this._img.standing+ '>');
+  this.$node = $('<img class="dancer raiden" src=' + this._img.standing + '>');
 };
 
 RaidenDancer.prototype = Object.create(BlinkyDancer.prototype);
@@ -25,7 +25,7 @@ RaidenDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
   if(this._isShowing) {
     // toggle this._isShowing
-    $(this.$node).fadeOut();
+    this.$node.fadeOut();
     this._isShowing = false;
   } else {
     // update top, left
@@ -34,7 +34,7 @@ RaidenDancer.prototype.step = function() {
     var newLeft = this.left + (Math.random() * 200) - 100;
     this.setPosition(newTop, newLeft);
     // toggle this._isShowing
-    $(this.$node).show();
+    this.$node.show();
     this._isShowing = true;
   }
   this.$node.toggle();

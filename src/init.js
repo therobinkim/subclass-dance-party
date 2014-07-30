@@ -10,7 +10,7 @@ $(document).ready(function() {
     var max = 100;
     var border = $(this).css('border').split('px');
     var num = parseInt(border[0]) * 2;
-    if(num < max){
+    if(num < max) {
       border[0] = num;
 
       var newTop = $(this).css('top');
@@ -19,13 +19,11 @@ $(document).ready(function() {
       var newLeft = $(this).css('left');
       newLeft = parseInt(newLeft) - num/2;
 
-      $(this).css({top:newTop, left:newLeft});
+      $(this).css({top: newTop, left: newLeft});
       $(this).css('border', border.join('px'));
       $(this).css('border-radius', num + 'px');
     }
   });
-
-  // $('.blink').hover(alert('boom'));
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -43,7 +41,6 @@ $(document).ready(function() {
      */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
-
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
@@ -58,4 +55,3 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 });
-
