@@ -20,19 +20,44 @@ var SpaceInvaderDancer = function(top, left, timeBetweenSteps){
 SpaceInvaderDancer.prototype = Object.create(Dancer.prototype);
 SpaceInvaderDancer.prototype.constructor = SpaceInvaderDancer;
 
-SpaceInvaderDancer.prototype._oldStep = Dancer.prototype.step;
 SpaceInvaderDancer.prototype.step = function(){
-  this._oldStep();
+  Dancer.prototype.step.call(this);
 
-  //Explodes
+/*
+  Get the window.dancers
+  for each dancer
+    get their top and left positions
+    calculate the distance from this dancer to the other dancer
+      if distance is less than x
+        move down by x
+*/
+  var getClosest = function (){
+    //Get dancers
+    for(var i = 0; i < window.dancers.length; i++){
+      var dancer = window.dancers[i];
+      if(dancer !== this){
+        var dancerTop = dancer.top;
+        var dancerLeft = dancer.left;
 
-  //When does it animate
-  //In what ways does it animate
-  //first we animate
-  //update the top and left
+        //do stuff to calculate distance
+        var dist = distance(this.top, this.left, dancerTop, dancerLeft);
+        console.log(dist);
+        if(dist < 100){
+          this.setPosition(this.top + 100, this.left);
+        }
+        function distance(myTop, myLeft, oTop, oLeft){
+          var result = Math.pow(myTop - oTop, 2) + Math.pow(myLeft - oLeft, 2);
+          return Math.sqrt(result);
+        }
+      }
+    }
+  };
+
+  getClosest.call(this);
+  
   if(this._even){
-    if(this.left < this.base+300){
-      this.left+=100;
+    if(this.left < this.base + 300){
+      this.left += 100;
     } else{
       this._even = false;
     }

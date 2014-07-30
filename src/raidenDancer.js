@@ -31,22 +31,8 @@ RaidenDancer.prototype.step = function() {
   } else {
     // update top, left
     // run setPosition(top, left)
-    var oldTop = this.top;
-    var oldLeft = this.left;
-    var newTop = oldTop + (Math.random() * 200) - 100;
-    if(newTop < 0) {
-      newTop = 0;
-    }
-    if(newTop > $('body').height()) {
-      newTop = $('body').height() - 50;
-    }
-    var newLeft = oldLeft + (Math.random() * 200) - 100;
-    if(newLeft < 0) {
-      newLeft = 0;
-    }
-    if(newLeft > $('body').height()) {
-      newLeft = $('body').height() - 50;
-    }
+    var newTop = this.top + (Math.random() * 200) - 100;
+    var newLeft = this.left + (Math.random() * 200) - 100;
     this.setPosition(newTop, newLeft);
     // toggle this._isShowing
     $(this.$node).show();
@@ -54,9 +40,9 @@ RaidenDancer.prototype.step = function() {
   }
   this.$node.toggle();
 };
-RaidenDancer.prototype._oldLineUp = BlinkyDancer.prototype.lineUp;
+
 RaidenDancer.prototype.lineUp = function(){
-  this._oldLineUp();
+  BlinkyDancer.prototype.lineUp.call(this);
   this.$node.attr('src', this._img.dizzy);
 
   // makes Raiden Dancer not move

@@ -14,26 +14,32 @@ Dancer.prototype.step = function() {
   }, this.timeBetweenSteps);
 };
 
-// "actions" property
-// obj
-// keys: actionName
-// value: new step function (unique per subclass)
-// set step to default action
-// actions.default = function () {...orig contents of Dancer.proto.step...}
-// actions.old = function () {...orig contents of Dancer.proto.step...}
-
 Dancer.prototype.setPosition = function(top, left) {
-  this.top = top;
-  this.left = left;
   var styleSettings = {
     top: top,
     left: left
   };
+
+  if(top < 0) {
+    top = 0;
+  }
+  if(top > $('body').height()) {
+    top = $('body').height() - 50;
+  }
+
+  if(left < 0) {
+    left = 0;
+  }
+  if(left > $('body').height()) {
+    left = $('body').height() - 50;
+  }
+
+  this.top = top;
+  this.left = left;
+  
   this.$node.css(styleSettings);
 };
 
 Dancer.prototype.lineUp = function(){
-  //do stuff
   this.setPosition(this.top, 100);
-}
-
+};
