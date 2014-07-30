@@ -16,7 +16,6 @@ var RaidenDancer = function(top, left, timeBetweenSteps) {
     dizzy: "http://www.mortalkombatwarehouse.com/mk2/raiden/sprites/dizzy/a1.gif"
   };
   this.$node = $('<img class="dancer raiden" src='+ this._img.standing+ '>');
-  this.$node.addClass('raiden');
 };
 
 RaidenDancer.prototype = Object.create(BlinkyDancer.prototype);
@@ -41,7 +40,7 @@ RaidenDancer.prototype.step = function() {
   this.$node.toggle();
 };
 
-RaidenDancer.prototype.lineUp = function(){
+RaidenDancer.prototype.lineUp = function() {
   BlinkyDancer.prototype.lineUp.call(this);
   this.$node.attr('src', this._img.dizzy);
 
@@ -53,8 +52,8 @@ RaidenDancer.prototype.lineUp = function(){
   };*/
 
   var self = this;
-  setTimeout(function(){  
+  setTimeout(function() {  
       self.$node.attr('src', self._img.standing);
       //self.step = raidenStep;
   }, 5000);
-}
+};
